@@ -1,0 +1,18 @@
+long_input = """
+Truong Cong Dat is student. Gary L. Bennett, a scientist and engineer, has contributed to various space missions, including Voyager,
+Galileo, and Ulysses. He has worked on advanced space power and propulsion systems and has been
+involved in planetary protection measures. Bennett’s expertise has been instrumental in ensuring the
+scientific integrity of celestial bodies and preventing harmful contamination. He has received numerous
+awards and accolades for his contributions to space exploration and is recognized as a leading expert in
+the field of planetary protection. Gary L. Bennett, a renowned scientist and engineer, has made significant contributions to space missions,
+including Voyager, Galileo, and Ulysses. His expertise in advanced space power and propulsion systems,
+as well as planetary protection measures, has been crucial in ensuring the scientific integrity of celestial
+bodies and preventing harmful contamination. Bennett has received numerous accolades for his work,
+including the NASA Exceptional Service Medal and the COSPAR Distinguished Service Award.Gary L. Bennett, a distinguished scientist and engineer, played a pivotal role in various space missions,
+particularly Voyager, Galileo, and Ulysses. His expertise in advanced space power and propulsion
+systems, coupled with his focus on planetary protection measures, has been instrumental in safeguarding
+the scientific integrity of celestial bodies. Ulysses, launched in 1990, embarked on a unique trajectory to
+explore both the southern and northern polar regions of the Sun. During its extended mission, Ulysses
+provided invaluable data on the Sun’s magnetic field, solar wind, and the presence of dust in the Solar
+System. The student is metioned in paragraph header is 18 years old.
+"""
