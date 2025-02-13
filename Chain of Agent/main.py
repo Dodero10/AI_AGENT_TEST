@@ -4,6 +4,7 @@ import fitz  # PyMuPDF
 import streamlit as st
 from chain_of_agent import ChainOfAgents
 from dotenv import load_dotenv
+from rag import RAG
 
 # Load environment variables from .env file
 load_dotenv()
@@ -29,27 +30,22 @@ if uploaded_files:
         with fitz.open(stream=uploaded_file.read(), filetype="pdf") as doc:
             for page in doc:
                 long_input += page.get_text()
+    
+    # Display text length information
+    st.info(f"Total length of input text: {len(long_input)} characters")
 
 # Input fields
 query = st.text_input("Enter your query:")
 context_window_size = st.number_input("Context window size:", min_value=1, value=100)
-
-def simple_rag(query, documents):
-    # Simple keyword-based retrieval
-    relevant_docs = [doc for doc in documents if query.lower() in doc.lower()]
-    # Concatenate relevant documents
-    context = " ".join(relevant_docs)
-    # Simulate a response generation
-    response = f"Based on the retrieved context, the answer to your query '{query}' is: [Simulated Response]"
-    return response
 
 if st.button("Process"):
     if long_input and query:
         # Split the long input into documents (e.g., by paragraphs)
         documents = long_input.split("\n\n")
         
-        # Perform simple RAG
-        rag_output = simple_rag(query, documents)
+        # Initialize and perform RAG
+        rag = RAG()
+        rag_output = rag.generate_answer(query, documents)
         
         # Perform Chain of Agents
         chain_of_agents = ChainOfAgents(

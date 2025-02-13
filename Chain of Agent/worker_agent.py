@@ -1,54 +1,31 @@
-import openai
+from openai import OpenAI
+
 
 class WorkerAgent:
-    """
-    A class to represent a worker agent that processes chunks of text
-    using a specified model and communicates with previous interactions.
-
-    Attributes:
-        agent_name (str): The name of the agent.
-        model (str): The model used for processing.
-        api_key (str): The API key for authentication.
-    """
-
-    def __init__(self, agent_name: str, model: str, api_key: str):
+    def __init__(self, agent_name, model, api_key):
         self.agent_name = agent_name
         self.model = model
-        self.api_key = api_key
+        self.client = OpenAI(api_key=api_key)
     
-    def process_chunk(self, chunk: str, previous_communication: str, query: str = '') -> str:
-        """
-        Process a text chunk and return the response from the model.
+    def process_chunk(self, chunk, communication_unit, query):
+        prompt = f"""
+        {chunk}
+        
+        Here is the summary of the previous source text: {communication_unit}
 
-        Args:
-            chunk (str): The text chunk to process.
-            previous_communication (str): The previous communication context.
-            query (str, optional): An optional query to include. Defaults to ''.
+        Question: {query}
 
-        Returns:
-            str: The processed response from the model.
+        You need to read the current source text and the summary of the previous source text (if any) and generate a summary that includes them both. Later, this summary will be used by other agents to answer the Query, if any.
+
+        So please write a summary that contains essential information while ensuring it includes the evidence needed to answer the Query.
         """
-        # Process each chunk with GPT-4o-mini and communicate with the previous worker
-        input_text = f"Previous Communication: {previous_communication}\nChunk: {chunk}\nQuery: {query}"
-        response = self._query_gpt(input_text)
-        return response['choices'][0]['message']['content'].strip()
+        
+        response = self._query_gpt(prompt)
+        return response.choices[0].message.content.strip()
     
-    def _query_gpt(self, input_text: str) -> dict:
-        """
-        Query the GPT model with the provided input text.
-
-        Args:
-            input_text (str): The input text to send to the model.
-
-        Returns:
-            dict: The response from the GPT model.
-        """
-        openai.api_key = self.api_key
-        response = openai.ChatCompletion.create(
+    def _query_gpt(self, prompt):
+        response = self.client.chat.completions.create(
             model=self.model,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": input_text}
-            ]
+            messages=[{"role": "user", "content": prompt}]
         )
         return response
