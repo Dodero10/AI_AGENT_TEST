@@ -1,3 +1,4 @@
+import streamlit as st
 from openai import OpenAI
 
 
@@ -21,7 +22,14 @@ class WorkerAgent:
         """
         
         response = self._query_gpt(prompt)
-        return response.choices[0].message.content.strip()
+        result = response.choices[0].message.content.strip()
+        
+
+        st.write(f"**{self.agent_name} Communication Unit:**")
+        st.write(result)
+        st.divider()  
+        
+        return result
     
     def _query_gpt(self, prompt):
         response = self.client.chat.completions.create(

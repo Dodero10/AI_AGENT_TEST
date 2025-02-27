@@ -1,6 +1,8 @@
 from typing import List
-from worker_agent import WorkerAgent
+
 from manager_agent import ManagerAgent
+from worker_agent import WorkerAgent
+
 
 class ChainOfAgents:
     def __init__(self, long_input: str, context_window_size: int, model: str, api_key: str, query: str = ''):
@@ -29,7 +31,20 @@ class ChainOfAgents:
         return final_output
     
     def split_input_into_chunks(self, input_text: str, window_size: int) -> List[str]:
-        # Split input into smaller chunks based on the context window size
-        tokens = input_text.split()  # Simplified tokenization, assume whitespace separates tokens
-        chunks = [tokens[i:i + window_size] for i in range(0, len(tokens), window_size)]
-        return [' '.join(chunk) for chunk in chunks]
+        # Split input into smaller chunks based on character length
+        chunks = []
+        current_chunk = ""
+        words = input_text.split()
+        
+        for word in words:
+            if len(current_chunk) + len(word) + 1 <= window_size:
+                current_chunk += (" " + word if current_chunk else word)
+            else:
+                if current_chunk:
+                    chunks.append(current_chunk)
+                current_chunk = word
+        
+        if current_chunk:
+            chunks.append(current_chunk)
+            
+        return chunks
