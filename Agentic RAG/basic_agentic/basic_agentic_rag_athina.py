@@ -18,8 +18,17 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.tools import tool
 from langchain.chains import RetrievalQA
 from langchain.tools import Tool
+# Import LangSmith for tracing
+from langsmith import Client
+from langsmith.run_helpers import traceable
 
 load_dotenv()
+
+# Initialize LangSmith client
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
+os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGSMITH_API_KEY")
+os.environ["LANGCHAIN_PROJECT"] = "agentic-rag-project"  # You can change this project name
 
 questions = [
     "What things you know about AI Engineer in Viettel Software Company?",
@@ -52,6 +61,7 @@ vector_store.save_local("faiss_db")
 retriever = vector_store.as_retriever()
 
 
+@traceable(run_type="tool")
 @tool
 def vector_search_tool(query: str) -> str:
     """Use this tool to search the vector database FAISS for relevant information"""
@@ -67,6 +77,7 @@ def vector_search_tool(query: str) -> str:
     return result
 
 
+@traceable(run_type="tool")
 @tool
 def web_search_tool(query: str) -> str:
     """Use this tool to search the web for relevant information"""
@@ -172,12 +183,15 @@ for query in questions:
     contexts_vector = []
 
     try:
-        # Add rate limiting to avoid Google API quota issues
-        time.sleep(2)  # Wait 2 seconds between queries
+        time.sleep(2)
 
-        result = agent_output.invoke({"input": query})
-        # Store the response as a string instead of in a list
-        response_str = str(result["output"])
+        # Add a trace name for LangSmith
+        with Client().trace(
+            name=f"Agentic RAG Query: {query[:50]}...",
+            project_name=os.getenv("LANGCHAIN_PROJECT")
+        ) as tracer:
+            result = agent_output.invoke({"input": query})
+            response_str = str(result["output"])
 
         # Copy the collected contexts
         query_contexts_web = [str(item) for item in contexts_web]
@@ -188,19 +202,17 @@ for query in questions:
             'query': query,
             'context_vector': query_contexts_vector,
             'context_web': query_contexts_web,
-            'response': response_str  # Use string instead of list
+            'response': response_str  
         }
 
-        # Add the row to Athina dataset
         try:
             Dataset.add_rows(
                 dataset_id='aa77e83a-147b-47c5-91ad-ca344189b8d9',
-                rows=[row]  # Pass a list of dictionaries
+                rows=[row]
             )
             print(f"Successfully added data for query: {query}")
         except Exception as e:
             print(f"Failed to add rows to Athina: {e}")
-            # Print the data types to help debug
             print(
                 f"Data types: query={type(query)}, "
                 f"context_vector={type(query_contexts_vector)}, "
@@ -210,7 +222,6 @@ for query in questions:
 
     except Exception as e:
         print(f"Error processing query '{query}': {e}")
-        # If we hit a rate limit, wait longer before continuing
         if "ResourceExhausted" in str(e) or "429" in str(e):
             print("Rate limit hit. Waiting 60 seconds before continuing...")
             time.sleep(60)
