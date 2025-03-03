@@ -24,12 +24,6 @@ from langsmith.run_helpers import traceable
 
 load_dotenv()
 
-# Initialize LangSmith client
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
-os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGSMITH_API_KEY")
-os.environ["LANGCHAIN_PROJECT"] = "agentic-rag-project"  # You can change this project name
-
 questions = [
     "What things you know about AI Engineer in Viettel Software Company?",
     "What address of Viettel Software Company?",

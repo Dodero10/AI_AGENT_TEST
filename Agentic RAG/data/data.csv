@@ -1,0 +1,42 @@
+﻿STT,Mã dự án,Tên dự án,Mentor,Mô tả 
+1,P1,Hệ thống kiểm soát ra vào sử dụng IoT platform và công nghệ nhận dạng khuôn mặt,Nguyễn Hoàng Long,"Thiết kế và triển khai hệ thống kiểm soát ra vào sử dụng nền tảng IoT, tích hợp các công nghệ RFID, AI nhận dạng khuôn mặt.
+Xây dựng phần mềm quản lý, giám sát thời gian thực, lưu trữ và phân tích dữ liệu"
+2,P2,Phần mềm quản lý giám sát máy tính trong phòng thi ,Hoàng Việt Dũng,"Thiết kế hệ thống máy chủ (máy giám sát) trong phòng thi với các tính năng: Giám sát hoạt động của các máy tính, phát hiện và cảnh báo vi phạm, quản lý tường lửa, cấu hình quản lý theo thời gian"
+3,P3,Phần mềm mô phỏng lây lan mã độc nhằm nâng cao sự cảnh giác của người dùng,Nguyễn Quốc Khánh,"Xây dựng một nhóm mã độc lành tính (không gây hại) những giữ nguyên khả năng lấy nhiễm.
+Xây dựng các kịch bản và thông báo khi mã độc hoạt động (click vào quảng cáo, cắm USB vào máy tính lạ,) nhằm nâng cáo tính cảnh giác của người dùng."
+4,P4,"Hệ thống điểm danh sinh viên tự động sử dụng IoT platform với công nghệ RFID, QR code, nhận dạng khuôn mặt",Mai Xuân Ngọc,"Xây dựng giải pháp điểm danh tự động bằng thẻ sinh viên sử dụng công nghệ RFID
+Xây dựng phần mềm quản lý dữ liệu điểm danh"
+5,P5,Phần mềm thiết lập an ninh trong giám sát thi tại phòng máy,Mai Xuân Ngọc,"Xây dựng phần mềm ở phía máy tính client cho phép nhận lệnh điều khiển từ quản trị viên, thực thi các lệnh để cấu hình, kiểm soát truy cập mạng, giám sát các máy tính trong phòng máy"
+6,P6,Trợ lý ảo hỗ trợ tạo lộ trình học tập tự động sử dụng mô hình ngôn ngữ lớn,Nguyễn Sơn Tùng,"Thiết kế các AI Agent hỗ trợ xây dựng kiến thức nền tảng, lộ trình học, bài tập thực hành và tài nguyên tham khảo
+Xây dựng luồng phối hợp hoạt động giữa các Agents.
+Tự động biên soạn và lưu trữ tất cả nội dung trong Google Docs."
+7,P7,Trợ lý ảo hỗ trợ việc học lập trình cho sinh viên,Lê Hải Nam,"Xậy dựng trợ lý ảo hỏi đáp, sửa lỗi, đánh giá feedback cho sinh viên trong quá trình code. Tích hợp vào các IDE như Visual Code "
+8,P8,Ứng dụng trợ lý sức khỏe tinh thần bằng AI,Hồ Viết Đức Lương,"Một chatbot AI giúp hỗ trợ tâm lý, đưa ra lời khuyên dựa trên dữ liệu khoa học, giúp người dùng cải thiện sức khỏe tinh thần."
+9,P9,Hệ thống phát hiện lưu lượng mã độc trong mạng,Trần Đình Kiến Giang,Ứng dụng phát hiện lưu lượng mã độc trong mạng
+10,P10,"Ứng dụng hỗ trợ sinh viên truy vấn tài liệu, giải đáp thắc mắc trong quá trình học tập",Bùi Trọng Đức,"Truy vấn thông tin từ công văn, tài liệu, ..., hỗ trợ giải đáp các thắc mắc của sinh viên"
+11,P11,Ứng dụng quản lý học tập cho sinh viên sử dụng AI,Trần Thị Lan Anh,"Ứng dụng quản lý thời khóa biểu học tập, deadline bài tập, lịch thi, giúp sinh viên tổ chức kế hoạch học tập hiệu quả
+Quản lý tài liệu học tập, đề xuất tài liệu tự động dựa trên môn học và nhu cầu học tập. Nhắc nhở, thông báo thời gian học, nghỉ ngơi, và tiến độ công việc để tránh căng thẳng"
+12,P12,Ứng dụng hỗ trợ sinh viên lựa chọn ngành học phù hợp sử dụng AI,Phạm Mạnh Tuấn,"Ứng dụng gợi ý ngành học phù hợp dựa trên các dữ liệu khả năng, sở thích của sinh viên"
+13,P13,Ứng dụng định hướng nghề nghiệp dựa trên AI,Nguyễn Minh Quân,"Đánh giá năng lực, sở thích và xu hướng nghề nghiệp học sinh, sinh viên.
+Cung cấp các bài test tính cách (DISC, MBTI,...)
+Lựa chọn được nghề nghiệp, ứng dụng sẽ cung cấp lộ trình và các khóa học (có tài liệu đầy đủ và các bài test) nhằm giúp hssv cải thiện năng lực chuyên môn và cơ hội nghề nghiệp"
+14,P14,Trợ lý ảo hỗ trợ đánh giá kết quả người học,Nguyễn Duy Tùng,"Thiết kế hệ thống hỗ trợ xây dựng đề kiểm tra, đánh giá kết quả người học dựa trên quá trình học và kết quả kiểm tra của người học, qua đó đảm bảo tính minh bạch và chính xác của chứng chỉ cấp cho người học"
+15,P15,Xây dựng hệ thống IoT ứng dụng AI tạo sinh giải mã suy nghĩ người Việt,Trịnh Văn Chiến,"Hệ thống IoT có khả năng thu thập tín hiệu sóng não, giải mã và lưu trữ thành dữ liệu
+Hệ thống AI tạo sinh có khả năng giải mã dữ liệu thành thông tin
+Hệ thống đưa ra quyết định theo nhu cầu công việc"
+16,P16,Ứng dụng dự đoán tính chất của thuốc từ cấu trúc 3D,Nguyễn Đức Anh,"Mô hình có khả năng giữ được đầu ra khi toạ độ 3D đầu vào bị quay dịch
+Có thể phát triển thành mô hình sinh thuốc 3D với tính chất mong muốn"
+17,P17,Xây dựng hệ thống giám sát và tìm kiếm nơi đỗ xe,Đinh Thị Hà Ly,"Hệ thống cung cấp bản đồ các bãi đỗ xe, số lượng chỗ đỗ xe còn trống theo thời gian thực dựa trên nhận diện hình ảnh và/hoặc dữ liệu cảm biến từ hệ thống IoT
+Hệ thống cho phép người dùng đăng ký (book) chỗ đỗ xe và tính toán chi phí"
+18,P18,"Xây dựng hệ thống kiểm tra mã nguồn 
+sử dụng mô hình ngôn ngữ lớn",Tống Văn Vạn,"Hệ thống có khả năng phân tích mã nguồn và phát hiện mã nguồn tạo ra bởi chatbot (ChatGPT, v.v) sử dụng mô hình ngôn ngữ lớn.
+Có khả năng kiểm tra sao chép mã nguồn giữa các tệp mã nguồn với nhau.
+Sinh ra báo cáo tổng kết cho các mã nguồn.
+Ứng dụng trong các hệ thống hỗ trợ dạy và học lập trình tại các Trường Đại học "
+19,P19,Xây dựng hệ thống hỗ trợ sinh viên học và làm bài kiểm tra (Computerized Adaptive Testing),Đàm Quang Tuấn,"Kiểm tra thích ứng trên máy tính (CAT) là một trong những ứng dụng thành công đầu tiên của công nghệ vào giáo dục. Khác với các bài kiểm tra truyền thống áp dụng chung cho tất cả, CAT tạo ra bài kiểm tra cá nhân hóa, tự động điều chỉnh theo trình độ của từng học sinh. Hệ thống này giúp đánh giá chính xác năng lực của học sinh với số lượng câu hỏi tối ưu.
+Hệ thống CAT gồm hai thành phần chính hoạt động luân phiên:
+Mô hình chẩn đoán nhận thức (CDM): Dựa trên phản hồi trước đó của học sinh, mô hình này ước tính trình độ hiện tại bằng các phương pháp tâm lý học hoặc khoa học nhận thức.
+Thuật toán chọn câu hỏi: Dựa vào kết quả đánh giá, hệ thống chọn câu hỏi phù hợp từ ngân hàng đề theo các tiêu chí nhất định.
+Quá trình này lặp lại cho đến khi đạt điều kiện dừng, và kết quả đánh giá cuối cùng sẽ được phản hồi cho học sinh để hỗ trợ học tập trong tương lai."
+20,P20,Trợ lý ảo 3D sử dụng công nghệ thực tế ảo và mô hình ngôn ngữ lớn LLM,Trịnh Thành Trung,"Phát triển một module hiển thị mô hình trợ lý ảo 3 chiều, có khả năng tương tác với người xem, giới thiệu, trình bày các nội dung cho trước, và trả lời các câu hỏi của người xem bằng các kỹ thuật LLM như ChatGPT.
+Module trợ lý ảo 3D hướng đến việc triển khai trên thiết bị hiển thị hình ảnh hologram, bên cạnh đó cũng có thể triển khai trên các nền tảng khác như máy tính, web và các thiết bị di động."

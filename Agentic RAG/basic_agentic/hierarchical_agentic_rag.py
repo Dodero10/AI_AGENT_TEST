@@ -20,15 +20,10 @@ from langgraph.prebuilt import create_react_agent
 
 load_dotenv()
 
-# Set USER_AGENT environment variable to avoid warning
-USER_AGENT = os.getenv("USER_AGENT")
-
 tavily_tool = TavilySearchResults(
     max_results=5, api_key=os.getenv("TAVILY_API_KEY"))
 
 # Research team Tools
-
-
 @tool
 def scrape_webpages(urls: List[str]) -> str:
     """Use requests and bs4 to scrape the provided webpages for details information"""
@@ -42,16 +37,14 @@ def scrape_webpages(urls: List[str]) -> str:
     )
 
 # Document writting tool
-
-
 _TEMP_DICTIONARY = TemporaryDirectory()
 WORKING_DIRECTORY = Path(_TEMP_DICTIONARY.name)
-
+print(WORKING_DIRECTORY)
 
 @tool
 def create_outline(
     points: Annotated[List[str], "List of main points or sections."],
-    file_name: Annotated[str, "file path to save the outline"],
+    file_name: Annotated[str, "file name to save the outline"],
 ) -> Annotated[str, "Path of the saved outline file."]:
     """Create and save an outline"""
 
@@ -134,8 +127,6 @@ def python_repl_tool(
     return f"Successfully executed:\n```python\n{code}\n```\nStdout: {result}"
 
 # Define Utility Tools
-
-
 class State(MessagesState):
     next: str
 
@@ -170,14 +161,9 @@ def make_supervisor_node(llm: BaseChatModel, members=list[str]) -> str:
     return supervisor_node
 
 # Define Agent Teams
-
-# Research Team
-
-
+### Research Team
 llm = ChatOpenAI(model="gpt-4o-mini", api_key=os.getenv("OPENAI_API_KEY"))
-
 search_agent = create_react_agent(llm, tools=[tavily_tool])
-
 
 def search_node(state: State) -> Command[Literal["supervisor"]]:
     result = search_agent.invoke(state)

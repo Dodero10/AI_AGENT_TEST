@@ -13,3 +13,4 @@ langsmith>=0.1.0
 langchain-experimental>=0.1.0
 langgraph>=0.1.0
 ipython>=8.14.0
+chromadb>=0.1.0
