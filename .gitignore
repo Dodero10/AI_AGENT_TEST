@@ -7,3 +7,6 @@ __pycache__
 *.pyw
 *.pyz
 .vscode
+chroma_db
+vector_db
+vector_db/*

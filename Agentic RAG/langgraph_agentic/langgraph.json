@@ -1,0 +1,9 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "indexer": "./src/retrieval_graph/index_graph.py:graph",
+    "retrieval_graph": "./src/retrieval_graph/graph.py:graph",
+    "hierarchical_agentic_rag": "./src/retrieval_graph/hierarchical_agentic_rag.py:super_graph"
+  },
+  "env": ".env"
+}
