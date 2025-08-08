@@ -29,6 +29,33 @@ class ChainOfAgents:
         return final_output
     
     def split_input_into_chunks(self, input_text: str, window_size: int) -> List[str]:
+        """Split *input_text* into chunks of at most *window_size* tokens.
+
+        Parameters
+        ----------
+        input_text: str
+            The full text that needs to be processed.
+        window_size: int
+            Maximum number of tokens allowed in each chunk.  Must be
+            greater than zero.
+
+        Returns
+        -------
+        List[str]
+            A list where each element is a string containing up to
+            ``window_size`` whitespace separated tokens.
+
+        Raises
+        ------
+        ValueError
+            If ``window_size`` is less than 1.  Previously a value of 0
+            would cause ``range`` to raise ``ValueError: step must not be
+            zero`` when creating the chunks.
+        """
+
+        if window_size < 1:
+            raise ValueError("window_size must be at least 1")
+
         # Split input into smaller chunks based on the context window size
         tokens = input_text.split()  # Simplified tokenization, assume whitespace separates tokens
         chunks = [tokens[i:i + window_size] for i in range(0, len(tokens), window_size)]
